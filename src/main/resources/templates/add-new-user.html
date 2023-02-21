@@ -20,7 +20,14 @@
                             <td th:text="${admin.getUsername()}"></td>
                         </strong>
                         with roles:
-                    <td th:text="${admin.getAuthorities()}"></td>
+                    <td>
+                        <th:block th:each="role : ${admin.getRoles()}">
+                                            <span th:switch="${role.getRole()}">
+                                             <span th:case="'ROLE_ADMIN'">ADMIN</span>
+                                               <span th:case="'ROLE_USER'">USER</span>
+                                                    </span>
+                        </th:block>
+                    </td>
                     </p>
                     <div class="float-right">
                         <a href="/logout" style="color: darkgrey" class="card-link">Logout</a>

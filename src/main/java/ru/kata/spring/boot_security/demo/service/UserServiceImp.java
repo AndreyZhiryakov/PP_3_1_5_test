@@ -24,8 +24,6 @@ public class UserServiceImp implements UserService {
     private EntityManager entityManager;
     @Autowired
     UserRepository userRepository;
-//    @Autowired
-//    RoleRepository roleRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
