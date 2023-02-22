@@ -17,7 +17,7 @@ public class AdminRestController {
     private UserService userService;
 @Autowired
     private RoleService  roleService;
-    @GetMapping("/users")
+    @GetMapping("/admin")
     public List<User> allUsers(){
         List <User> users = userService.getUsersList();
         return users;
