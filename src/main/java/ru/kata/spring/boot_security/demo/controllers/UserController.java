@@ -3,6 +3,7 @@ package ru.kata.spring.boot_security.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.kata.spring.boot_security.demo.service.UserService;
 import ru.kata.spring.boot_security.demo.service.UserServiceImp;
@@ -10,6 +11,7 @@ import ru.kata.spring.boot_security.demo.service.UserServiceImp;
 import java.security.Principal;
 
 @Controller
+@CrossOrigin
 public class UserController {
 
     private UserService userService;
