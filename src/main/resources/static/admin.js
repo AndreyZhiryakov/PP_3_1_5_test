@@ -1,16 +1,13 @@
- async function getAllUsers(){
-    const res = await fetch('api/admin');
-    const users = await res.json();
-    console.log(users);
- }
+fetch("api/admin").then((data) =>{
+   //console.log(data);
+   return data.json();// converted to object
+}).then((objectData)=>{
+   console.log(objectData[0].firstname);
+   let tableDate= "";
+   objectData.map((value)=>{
+    tableData=`${value.id}`
+   });
+   document.getElementById("users")
+   .innerHTML = tableData;
 
- window.addEventListener('DOMContentLoaded',getAllUsers);
-
-function usersToHTML({id,firstname,lastname,age,email,role}){
-    const usersList = document.getElementById('users')
-
-}
-
-
-
-
+})

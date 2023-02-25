@@ -69,7 +69,7 @@
                         <h5 class="card-header">
                             All users
                         </h5>
-                        <div class="card-body">
+                        <div class="card-body" id ="usersList">
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -83,10 +83,10 @@
                                     <th scope="col">Delete</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id = "users">
                                 <tr style="background-color:rgba(58,74,74,0.06)" th:each="user: ${adminPage}">
 
-                                    <td>ID</td>
+                                    <td></td>
                                     <td th:text="${user.getFirstname()}">
                                     <td th:text="${user.getLastname()}">
                                     <td th:text="${user.getAge()}">
