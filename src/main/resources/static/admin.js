@@ -1,2 +1,2 @@
-alert('Hello');
+alert('Hello.All is OK');
 
