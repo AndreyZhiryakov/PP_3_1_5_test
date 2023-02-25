@@ -11,7 +11,7 @@ import ru.kata.spring.boot_security.demo.service.UserServiceImp;
 import java.security.Principal;
 
 @Controller
-@CrossOrigin
+
 public class UserController {
 
     private UserService userService;

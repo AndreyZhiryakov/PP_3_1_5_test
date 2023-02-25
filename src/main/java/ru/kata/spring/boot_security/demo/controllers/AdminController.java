@@ -21,7 +21,7 @@ import java.util.Set;
 
 
 @Controller
-@CrossOrigin
+
 
 public class AdminController {
 

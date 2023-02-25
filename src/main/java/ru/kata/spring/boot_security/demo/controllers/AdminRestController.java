@@ -11,17 +11,23 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api")
 public class AdminRestController {
 @Autowired
     private UserService userService;
 @Autowired
     private RoleService  roleService;
+
+    @GetMapping()
+    public ResponseEntity <List<String>> getTest () {
+        List<String> st = List.of("1", "2");
+        return new ResponseEntity<>(st, HttpStatus.OK);
+    }
+
     @GetMapping("/admin")
-    public List<User> allUsers(){
+    public ResponseEntity allUsers(){
         List <User> users = userService.getUsersList();
-        return users;
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public User getUser (@PathVariable Long id) {
@@ -52,4 +58,6 @@ public class AdminRestController {
         userService.deleteUser(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+
 }

@@ -13,7 +13,7 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 import java.security.Principal;
 
 @Controller
-@CrossOrigin
+
 public class UserRestController {
     @Autowired
     private UserService userService;
