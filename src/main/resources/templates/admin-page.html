@@ -70,6 +70,7 @@
                             All users
                         </h5>
                         <div class="card-body">
+                            <hr style="color: gray" class="my-1">
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -83,22 +84,7 @@
                                     <th scope="col">Delete</th>
                                 </tr>
                                 </thead>
-                                <tbody id = "users">
-                                <tr style="background-color:rgba(58,74,74,0.06)" th:each="user: ${adminPage}">
-
-                                    <td th:text="${user.getId()}">
-                                    <td th:text="${user.getFirstname()}">
-                                    <td th:text="${user.getLastname()}">
-                                    <td th:text="${user.getAge()}">
-                                    <td th:text="${user.getEmail()}">
-                                    <td>
-                                        <th:block th:each="role : ${user.getRoles()}">
-                                            <span th:switch="${role.getRole()}">
-                                             <span th:case="'ROLE_ADMIN'">ADMIN</span>
-                                               <span th:case="'ROLE_USER'">USER</span>
-                                                    </span>
-                                        </th:block>
-                                    </td>
+                                <tbody id = "users"></td>
                                     <td>
                                         <button type="button" class="btn btn-info" data-toggle="modal" role="dialog"
                                                 th:data-target=" '#editModal'+ ${user.getId()}">
@@ -111,6 +97,7 @@
                                             Delete user
                                         </button>
                                     </td>
+                                </tr>
                                 </tbody>
 
                                     <!-- Modal -->
@@ -260,7 +247,7 @@
                                         </div>
                                     </div>
 
-                                </tr>
+
 
 
                             </table>
