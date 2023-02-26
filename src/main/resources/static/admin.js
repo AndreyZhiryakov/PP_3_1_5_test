@@ -28,7 +28,7 @@ fetch("api/admin").then((data) => {
                                             Delete user
                                         </button>
                                     </td>
-                                    
+                             
                                 </tr>`;
    });
    document.getElementById("users")

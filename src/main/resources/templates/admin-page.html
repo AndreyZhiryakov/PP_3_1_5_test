@@ -84,23 +84,9 @@
                                     <th scope="col">Delete</th>
                                 </tr>
                                 </thead>
-                                <tbody id = "users"></td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" role="dialog"
-                                                th:data-target=" '#editModal'+ ${user.getId()}">
-                                            Edit
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                role="dialog" th:data-target="'#deleteModal'+ ${user.getId()}">
-                                            Delete user
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                <tbody id = "users"></tbody>
 
-                                    <!-- Modal -->
+                                    <!-- Modal Edit-->
                                     <div class="modal fade" id="editModal" data-backdrop="static"
                                          data-keyboard="false"
                                          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -179,7 +165,7 @@
 
 
 
-                                    <!-- Modal -->
+                                    <!-- Modal Delete-->
                                     <div class="modal fade" id="deleteModal" data-backdrop="static"
                                          data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                          aria-hidden="true">
@@ -194,10 +180,10 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body" >
-                                                    <form th:method="DELETE"
+                                                    <form th:method="DELETE" style="margin:0 auto; text-align: center; width: 300px"
                                                           th:action="@{/admin/{id}(id=${user.getId()})}"
                                                           th:object="${user}">
-                                                        style="margin:0 auto; text-align: center; width: 300px">
+
                                                         <div class="form-group">
                                                             <label for="id"><strong>ID</strong></label>
                                                             <input type="text" class="form-control" th:value="${user.id}"
