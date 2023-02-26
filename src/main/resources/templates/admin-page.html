@@ -105,7 +105,14 @@
                                             Edit
                                         </button>
                                     </td>
-                                    
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                role="dialog" th:data-target="'#deleteModal'+ ${user.getId()}">
+                                            Delete user
+                                        </button>
+                                    </td>
+                                </tbody>
+
                                     <!-- Modal -->
                                     <div class="modal fade" th:id="'editModal'+ ${user.getId()}" data-backdrop="static"
                                          data-keyboard="false"
@@ -183,12 +190,7 @@
                                     </div>
 
 
-                                    <td>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                role="dialog" th:data-target="'#deleteModal'+ ${user.getId()}">
-                                            Delete user
-                                        </button>
-                                    </td>
+
 
                                     <!-- Modal -->
                                     <div class="modal fade" th:id="'deleteModal'+ ${user.getId()}" id="deleteModal" data-backdrop="static"
@@ -260,7 +262,7 @@
 
                                 </tr>
 
-                                </tbody>
+
                             </table>
                         </div>
                     </div>
