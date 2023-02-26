@@ -18,13 +18,13 @@ fetch("api/admin").then((data) => {
                                     </th:block>
                                     <td>
                                         <button type="button" class="btn btn-info" data-toggle="modal" role="dialog"
-                                                th:data-target= "#editModal">
+                                                data-target= "#editModal">
                                             Edit
                                         </button>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                role="dialog" th:data-target="#deleteModal">
+                                                role="dialog" data-target="#deleteModal">
                                             Delete user
                                         </button>
                                     </td>
