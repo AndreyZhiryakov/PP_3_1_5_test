@@ -11,11 +11,11 @@ let option = ''
 
 
 fetch(url).then((data) => {
-   return data.json();// converted to object
+    return data.json();// converted to object
 }).then((objectData) => {
-   let tableData = "";
-   objectData.map((value) => {
-      tableData += `<tr>
+    let tableData = "";
+    objectData.map((value) => {
+        tableData += `<tr>
                                     <td>${value.id}</td>
                                     <td>${value.firstname}</td>
                                     <td>${value.lastname}</td>
@@ -42,23 +42,10 @@ fetch(url).then((data) => {
                                     </td>
                              
                                 </tr>`;
-   });
-   document.getElementById("users")
-       .innerHTML = tableData;
-   newUser.addEventListener('click', () =>{
-      firstname.value =''
-      lastname.value =''
-      age.value =''
-      email.value =''
-      password.value =''
-      $('#newModal').modal('show')
-      option = 'create'
-
-   })
-   // async function deleteUser (id) {
-   // const res = await fetch("api/${id}",{
-   //     method:'DELETE',
-
-
-
+    });
+    document.getElementById("users")
+        .innerHTML = tableData;
+    newUser.addEventListener('click', () => {
+        $('#newModal').modal('show')
+    })
 });
