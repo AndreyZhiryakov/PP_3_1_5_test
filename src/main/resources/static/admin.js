@@ -1,6 +1,14 @@
 const url = "api/admin"
-const place = document.querySelector('tbody')
+const container = document.querySelector('tbody')
 let res = ''
+const form = document.querySelector('form')
+const firstname = document.getElementById('newfirstname');
+const lastname = document.getElementById('newlastname');
+const age = document.getElementById('newage');
+const email = document.getElementById('newemail');
+const password = document.getElementById('newpassword');
+let option = ''
+
 
 fetch(url).then((data) => {
    return data.json();// converted to object
@@ -37,12 +45,20 @@ fetch(url).then((data) => {
    });
    document.getElementById("users")
        .innerHTML = tableData;
+   newUser.addEventListener('click', () =>{
+      firstname.value =''
+      lastname.value =''
+      age.value =''
+      email.value =''
+      password.value =''
+      $('#newModal').modal('show')
+      option = 'create'
 
+   })
    // async function deleteUser (id) {
    // const res = await fetch("api/${id}",{
    //     method:'DELETE',
 
-   const modalEdit = new bootstrap.Modal(document.getElementById('editModal'));
 
 
 });
