@@ -61,7 +61,7 @@
 
                         <button class="btn btn-link" type="button">
                             <a href="/admin/new" class="list-group-item list-group-item-action active"
-                               aria-current="true">New User</a>
+                               aria-current="true" id = "newUser">New User</a>
                         </button>
 
                     </div>
@@ -85,8 +85,111 @@
                                 </tr>
                                 </thead>
                                 <tbody id = "users"></tbody>
+                            </table>
+                                <!------ Modal New------------------------------------------------------------------->
+                                <div div class="modal fade" id="newModal" data-backdrop="static"
+                                     data-keyboard="false"
+                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="row">"
+                                        <div class="col-md-12">
+                                            <div class="card text-white bg-dark" style="height: 50px">
+                                                <div class="card-body">
+                                                    <p class="card-text" style="font-size: 20px; position: absolute; top: 12px">
+                                                        <strong>
+                                                            <td></td>
+                                                        </strong>
+                                                        with roles:
+                                                    <td>
+                                                        <th:block>
+                                            <span>
+                                             <span>ADMIN</span>
+                                               <span>USER</span>
+                                                    </span>
+                                                        </th:block>
+                                                    </td>
+                                                    </p>
+                                                    <div class="float-right">
+                                                        <a href="/logout" style="color: darkgrey" class="card-link">Logout</a>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                    <!-- Modal Edit-->
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="btn-group btn-group-vertical" role="group">
+
+                                                        <button style="color: white" class="btn btn-primary" type="button">
+                                                            Admin
+                                                        </button>
+                                                        <button class="btn btn-link" type="button">
+                                                            User
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="page-header">
+                                                        <h1>
+                                                            Admin panel
+                                                        </h1>
+                                                    </div>
+                                                    <div class="btn-group" role="group">
+                                                        <button class="btn btn-link" type="button">
+                                                            <a href="/admin">Users table</a>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-info"
+                                                                style="color: darkslategrey; border-color: lightgrey" ;>
+                                                            New User
+                                                        </button>
+                                                    </div>
+                                                    <div class="card">
+                                                        <h5 class="card-header">
+                                                            Add new user
+                                                        </h5>
+                                                        <div class="card-body">
+                                                            <form style="margin:0 auto; text-align: center; width: 300px">
+                                                                <div class="form-group">
+                                                                    <label for="firstname"><strong>First name</strong></label>
+                                                                    <input type="text"  class="form-control" id=""
+                                                                           placeholder="First name">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="lastname"><strong>Last name</strong></label>
+                                                                    <input type="text" class="form-control" id="  " placeholder="Last name">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="age"><strong>Age</strong></label>
+                                                                    <input type="text"  class="form-control" id="   " placeholder="Age">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="email"><strong>Email</strong></label>
+                                                                    <input type="email"  class="form-control" id="      " placeholder="Email">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="password"><strong>Password</strong></label>
+                                                                    <input type="password" class="form-control" id="        " placeholder="Password">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="role"><strong>Role</strong></label>
+                                                                    <select name="rolesSelected" multiple class="form-control" size="2" aria-label="size 2 select example"id="role" style="height: 60px">
+                                                                        <div>
+                                                                            <option  name=""/>
+                                                                        </div>
+                                                                    </select>
+                                                                </div>
+                                                                <button type="submit" class="card text-white" style="font-size:130%; width:auto; height: 45px;
+                              background-color: green;margin:0 auto;"> Add new user </button>
+                                                            </form>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!------ Modal New------------------------------------------------------------------->
+                                <!------ Modal Edit------------------------------------------------------------------>
                                     <div class="modal fade" id="editModal" data-backdrop="static"
                                          data-keyboard="false"
                                          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -161,11 +264,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                <!------ Modal Edit------------------------------------------------------------------->
 
 
-
-
-                                    <!-- Modal Delete-->
+                                <!-------Modal Delete----------------------------------------------------------------->
                                     <div class="modal fade" id="deleteModal" data-backdrop="static"
                                          data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                          aria-hidden="true">
@@ -204,9 +306,6 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="age"><strong>Age</strong></label>
-                                                            <!--                                                                <input type="text" class="form-control"-->
-                                                            <!--                                                                       th:value="${user.age}"id="age1"-->
-                                                            <!--                                                                       name="Age">-->
                                                             <input type="number"  size="1" name="Age" min="1" max="150" step="1"
                                                                    class="form-control"
                                                                    th:value="${user.age}"id="age1"
@@ -232,11 +331,7 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-                            </table>
+                                <!-------Modal Delete----------------------------------------------------------------->
                         </div>
                     </div>
                 </div>

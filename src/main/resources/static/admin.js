@@ -1,4 +1,8 @@
-fetch("api/admin").then((data) => {
+const url = "api/admin"
+const place = document.querySelector('tbody')
+let res = ''
+
+fetch(url).then((data) => {
    return data.json();// converted to object
 }).then((objectData) => {
    let tableData = "";
@@ -34,4 +38,11 @@ fetch("api/admin").then((data) => {
    document.getElementById("users")
        .innerHTML = tableData;
 
-})
+   // async function deleteUser (id) {
+   // const res = await fetch("api/${id}",{
+   //     method:'DELETE',
+
+   const modalEdit = new bootstrap.Modal(document.getElementById('editModal'));
+
+
+});
