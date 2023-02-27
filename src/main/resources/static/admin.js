@@ -1,13 +1,13 @@
 const url = "api/admin"
-const container = document.querySelector('tbody')
-let res = ''
-const form = document.querySelector('form')
-const firstname = document.getElementById('newfirstname');
-const lastname = document.getElementById('newlastname');
-const age = document.getElementById('newage');
-const email = document.getElementById('newemail');
-const password = document.getElementById('newpassword');
-let option = ''
+// const container = document.querySelector('tbody')
+// let res = ''
+// const form = document.querySelector('form')
+// const firstname = document.getElementById('newfirstname');
+// const lastname = document.getElementById('newlastname');
+// const age = document.getElementById('newage');
+// const email = document.getElementById('newemail');
+// const password = document.getElementById('newpassword');
+// let option = ''
 
 
 fetch(url).then((data) => {
@@ -45,7 +45,33 @@ fetch(url).then((data) => {
     });
     document.getElementById("users")
         .innerHTML = tableData;
+
+});
     newUser.addEventListener('click', () => {
         $('#newModal').modal('show')
     })
-});
+
+    document.getElementById('addUserButton').addEventListener('click',
+        async () => {
+        const newFirstName = document.getElementById('newfirstname');
+        const firstname = newFirstName.value;
+        console.log(firstname);
+        const newLastName = document.getElementById('newlastname');
+        const lastname = newLastName.value;
+        const newAge = document.getElementById('newage');
+        const age = newAge.value;
+        const newEmail = document.getElementById('newemail');
+        const email = newEmail.value;
+        const newPassword = document.getElementById('newpassword');
+        const password = newPassword.value;
+        const role = 'ROLE_ADMIN';
+
+        const res = await fetch("api/new", {
+            method: 'POST',
+            body: JSON.stringify(firstname,lastname,age,email,password,role)
+        });
+        const user = await res.json();
+        console.log(user);
+        })
+
+
