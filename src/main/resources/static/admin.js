@@ -1,8 +1,9 @@
 const url = "api/admin"
+let tableData = "";
 
 
+//Get all users
 const usersCreat = (users) => {
-    let tableData = "";
     users.map((value) => {
         tableData += `
 <tr>
