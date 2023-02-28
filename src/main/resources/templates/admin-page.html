@@ -52,19 +52,29 @@
                             Admin panel
                         </h1>
                     </div>
-                    <div class="btn-group" role="group">
+<!--                    <div class="btn-group" role="group">-->
 
-                        <button type="button" class="btn btn-outline-info"
-                                style="color: darkslategrey; border-color: lightgrey">
-                            Users table
-                        </button>
+<!--                        <button type="button" class="btn btn-outline-info"-->
+<!--                                style="color: darkslategrey; border-color: lightgrey">-->
+<!--                            Users table-->
+<!--                        </button>-->
 
 
-                        <button id = "newUser" class="list-group-item list-group-item-action active" type="button">
-                            New User
-                        </button>
+<!--                        <button id = "newUser" class="list-group-item list-group-item-action active" type="button">-->
+<!--                            New User-->
+<!--                        </button>-->
 
-                    </div>
+
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Users table</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">New User</a>
+                        </li>
+                    </ul>
+
                     <div class="card">
                         <h5 class="card-header">
                             All users
