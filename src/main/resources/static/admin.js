@@ -1,12 +1,20 @@
-const url = "api/admin"
+const url = "api/admin";
+const urlNew = "api/new";
 
-const usersTable  = document.getElementById("users")
 
+const usersTable  = document.getElementById("users");
+const addUserForm = document.getElementById("new-user-form");
+const firstNameValue = document.getElementById('firstname-value');
+const lastNameValue = document.getElementById('lastname-value');
+const ageValue = document.getElementById('age-value');
+const emailValue = document.getElementById('email-value');
+const passwordValue = document.getElementById('password-value');
+const rolesValue = document.getElementById('roles');
 let tableData = "";
 
 
 //Get all users
-const usersCreat = (users) => {
+const usersCreate = (users) => {
     users.map((value) => {
         tableData += `
 <tr>
@@ -41,10 +49,36 @@ const usersCreat = (users) => {
 
 fetch(url).then((data) => {
     return data.json();// converted to object
-}).then(objectData => usersCreat(objectData))
+}).then(objectData => usersCreate(objectData))
 
 //Create new user
 //POST method
+
+addUserForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(firstNameValue.value)
+    fetch(urlNew, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            firstname:firstNameValue.value,
+            lastname:lastNameValue.value,
+            age:ageValue.value,
+            email:emailValue.value,
+            password:passwordValue.value,
+            roles_:rolesValue.value
+        })
+        })
+        .then(res => res.json())
+        .then(data => {
+            const dataArr = [];
+            dataArr.push(data);
+            usersCreate(dataArr);
+        })
+    })
+
 
 // newUser.addEventListener('click', () => {
 //     $('#newModal').modal('show')
