@@ -50,12 +50,9 @@ fetch(url)
     .then(res => res.json())
     .then(data => usersCreate(data))
 
-
-
-
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     fetch(urlNew, {
         method: 'POST',
         headers: {
@@ -71,6 +68,10 @@ addUserForm.addEventListener('submit', (e) => {
 
         })
     })
+
+//         .then(res => res.json())
+//         .then(data => usersCreate(data))
+//
 })
 
 
