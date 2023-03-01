@@ -55,7 +55,7 @@ fetch(url)
 
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(firstNameValue.value)
+    
     fetch(urlNew, {
         method: 'POST',
         headers: {
