@@ -1,4 +1,7 @@
 const url = "api/admin"
+
+const usersTable  = document.getElementById("users")
+
 let tableData = "";
 
 
@@ -33,17 +36,19 @@ const usersCreat = (users) => {
 </td>
 </tr>`;
     });
-    document.getElementById("users")
-        .innerHTML = tableData;
+    usersTable.innerHTML = tableData;
 }
 
 fetch(url).then((data) => {
     return data.json();// converted to object
 }).then(objectData => usersCreat(objectData))
 
-newUser.addEventListener('click', () => {
-    $('#newModal').modal('show')
-})
+//Create new user
+//POST method
+
+// newUser.addEventListener('click', () => {
+//     $('#newModal').modal('show')
+// })
 
 // document.getElementById('addUserButton').addEventListener('click',
 //     async () => {
