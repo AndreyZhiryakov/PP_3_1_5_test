@@ -32,7 +32,7 @@ const usersCreate = (users) => {
 </th:block>
 <td>
 <button type="button" class="btn btn-info" data-toggle="modal" role="dialog"
-                  data-target= "#editModal">
+                  data-target= "#edit-modal">
   Edit
 </button>
 </td>
