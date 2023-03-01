@@ -10,19 +10,54 @@ const ageValue = document.getElementById('age-value');
 const emailValue = document.getElementById('email-value');
 const passwordValue = document.getElementById('password-value');
 const rolesValue = document.getElementById('roles');
-let tableData = "";
+let output = "";
 
 
 //Get all users
-const usersCreate = (users) => {
-    users.map((value) => {
-        tableData += `
+// const usersCreate = (users) => {
+//     users.map((value) => {
+//         output += `
+// <tr>
+// <td>${value.id}</td>
+// <td>${value.firstname}</td>
+// <td>${value.lastname}</td>
+// <td>${value.age}</td>
+// <td>${value.email}</td>
+// <td>
+// <th:block>
+//         <span th:switch="">
+//         <span th:case="'ROLE_ADMIN'">ADMIN</span>
+//         <span th:case="'ROLE_USER'">USER</span>
+//         </span>
+// </th:block>
+// <td>
+// <button type="button" class="btn btn-info" data-toggle="modal" role="dialog"
+//                   data-target= "#editModal">
+//   Edit
+// </button>
+// </td>
+// <td>
+// <button type="button" class="btn btn-danger" data-toggle="modal"
+//        role="dialog" data-target="#deleteModal">
+//        Delete user
+//        </button>
+// </td>
+// </tr>`;
+//     });
+//     usersTable.innerHTML = output;
+// }
+
+fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(user => {
+          output += `
 <tr>
-<td>${value.id}</td>
-<td>${value.firstname}</td>
-<td>${value.lastname}</td>
-<td>${value.age}</td>
-<td>${value.email}</td>
+<td>${user.id}</td>
+<td>${user.firstname}</td>
+<td>${user.lastname}</td>
+<td>${user.age}</td>
+<td>${user.email}</td>
 <td>
 <th:block>
         <span th:switch="">
@@ -43,13 +78,45 @@ const usersCreate = (users) => {
        </button>
 </td>
 </tr>`;
-    });
-    usersTable.innerHTML = tableData;
-}
 
-fetch(url).then((data) => {
-    return data.json();// converted to object
-}).then(objectData => usersCreate(objectData))
+      })
+        usersTable.innerHTML = output;
+    })
+
+
+//     .then(res => res.json())
+//     .then(data => {
+//
+//         output += `
+// <tr>
+// <td>${value.id}</td>
+// <td>${value.firstname}</td>
+// <td>${value.lastname}</td>
+// <td>${value.age}</td>
+// <td>${value.email}</td>
+// <td>
+// <th:block>
+//         <span th:switch="">
+//         <span th:case="'ROLE_ADMIN'">ADMIN</span>
+//         <span th:case="'ROLE_USER'">USER</span>
+//         </span>
+// </th:block>
+// <td>
+// <button type="button" class="btn btn-info" data-toggle="modal" role="dialog"
+//                   data-target= "#editModal">
+//   Edit
+// </button>
+// </td>
+// <td>
+// <button type="button" class="btn btn-danger" data-toggle="modal"
+//        role="dialog" data-target="#deleteModal">
+//        Delete user
+//        </button>
+// </td>
+// </tr>`;
+//     });
+// usersTable.innerHTML = output;
+
 
 //Create new user
 //POST method
@@ -71,12 +138,11 @@ addUserForm.addEventListener('submit', (e) => {
             roles_:rolesValue.value
         })
         })
-        .then(res => res.json())
-        .then(data => {
-            const dataArr = [];
-            dataArr.push(data);
-            usersCreate(dataArr);
-        })
+        // .then(res => res.json())
+        // .then(data =>
+        //     usersCreate(data))
+
+
     })
 
 
