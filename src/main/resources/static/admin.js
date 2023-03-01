@@ -9,7 +9,8 @@ const lastNameValue = document.getElementById('lastname-value');
 const ageValue = document.getElementById('age-value');
 const emailValue = document.getElementById('email-value');
 const passwordValue = document.getElementById('password-value');
-const rolesValue = document.getElementById('roles');
+const rolesValue = document.getElementById('roles-value');
+const deleteUserForm = document.getElementById("")
 let output = "";
 
 
@@ -37,7 +38,7 @@ const usersCreate = (users) => {
 </td>
 <td>
 <button type="button" class="btn btn-danger" data-toggle="modal"
-       role="dialog" data-target="#deleteModal">
+       role="dialog" data-target="#delete-modal">
        Delete user
        </button>
 </td>

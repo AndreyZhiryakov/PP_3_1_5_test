@@ -127,7 +127,7 @@
                                                placeholder="Password">
                                     </div>
                                     <div class="form-group">
-                                        <label for="newrole"><strong>Role</strong></label>
+                                        <label for="roles"><strong>Role</strong></label>
                                         <select name="rolesSelected" multiple class="form-control" size="2"
                                                 aria-label="size 2 select example" id="roles-value" style="height: 60px">
                                             <div>
@@ -223,7 +223,7 @@
 
 
                     <!-------Modal Delete----------------------------------------------------------------->
-                    <div class="modal fade" id="deleteModal" data-backdrop="static"
+                    <div class="modal fade" id="delete-modal" data-backdrop="static"
                          data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                          aria-hidden="true">
                         <div class="modal-dialog">
@@ -283,6 +283,9 @@
                                                         th:text="${role.getUnRole()}" name="id"/>
                                             </select>
                                         </div>
+                                        <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close
+                                        </button>
                                         <button type="submit" class="btn btn-primary">Delete</button>
                                     </form>
                                 </div>
