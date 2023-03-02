@@ -1,6 +1,6 @@
 const url = "api/admin";
 const urlNew = "api/new";
-const urlId = "api/{id}"
+const urlDel = "api/delete"
 
 
 const usersTable = document.getElementById("users");
@@ -57,11 +57,12 @@ fetch(url)
 
 deleteUserForm.addEventListener('click', (e) => {
     e.preventDefault();
-    let delButtonIsPressed = e.target.id == 'delete-user';
+    let delButtonIsPressed = e.target.id = 'delete-user';
 
 //Delete user
+//DELETE
     if (delButtonIsPressed) {
-        console.log('remove')
+        fetch(`${urlDel}/${id}`)
     }
 })
 

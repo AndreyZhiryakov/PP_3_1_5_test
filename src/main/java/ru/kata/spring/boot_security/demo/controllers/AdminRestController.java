@@ -53,7 +53,7 @@ public class AdminRestController {
     return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("edit/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok(HttpStatus.OK);
