@@ -10,10 +10,11 @@ const ageValue = document.getElementById('age-value');
 const emailValue = document.getElementById('email-value');
 const passwordValue = document.getElementById('password-value');
 const rolesValue = document.getElementById('roles-value');
-const deleteUserForm = document.getElementById("")
+const deleteUserForm = document.getElementById("delete-modal")
+
 let output = "";
 
-
+// users Table
 const usersCreate = (users) => {
     users.forEach(user => {
         output += `
@@ -51,7 +52,19 @@ fetch(url)
     .then(res => res.json())
     .then(data => usersCreate(data))
 
+//Users table
 
+deleteUserForm.addEventListener('click', (e) => {
+    e.preventDefault();
+    let delButtonIsPressed = e.target.id == 'delete-user';
+
+//Delete user
+    if (delButtonIsPressed) {
+        console.log('remove')
+    }
+})
+
+// Create new user
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -70,20 +83,13 @@ addUserForm.addEventListener('submit', (e) => {
 
         })
     })
-
-
-
         .then(res => res.json())
         .then(data => {
             const dataArr = [];
             dataArr.push(data);
             usersCreate(dataArr);
             location.reload();
-
         })
-
-
-
 })
 
 
