@@ -51,6 +51,7 @@ fetch(url)
     .then(res => res.json())
     .then(data => usersCreate(data))
 
+
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -70,10 +71,22 @@ addUserForm.addEventListener('submit', (e) => {
         })
     })
 
-//         .then(res => res.json())
-//         .then(data => usersCreate(data))
-//
+
+
+        .then(res => res.json())
+        .then(data => {
+            const dataArr = [];
+            dataArr.push(data);
+            usersCreate(dataArr);
+            location.reload();
+
+        })
+
+
+
 })
+
+
 
 
 
