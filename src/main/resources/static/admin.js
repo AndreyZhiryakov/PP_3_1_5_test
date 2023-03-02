@@ -1,5 +1,6 @@
 const url = "api/admin";
 const urlNew = "api/new";
+const urlId = "api/{id}"
 
 
 const usersTable = document.getElementById("users");
