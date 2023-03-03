@@ -11,11 +11,14 @@ const ageValue = document.getElementById('age-value');
 const emailValue = document.getElementById('email-value');
 const passwordValue = document.getElementById('password-value');
 const rolesValue = document.getElementById('roles-value');
-const deleteUserForm = document.getElementById("delete-modal");
 
-//const idDel = document.getElementById("edit-id");
+
+const deleteUserForm = document.getElementById("delete-modal");
 const modalDelete = document.getElementById('delete-modal')
 const deleteForm = document.getElementById('delete-form')
+
+const editModal = document.getElementById("edit-modal");
+
 
 
 let output = "";
@@ -89,8 +92,12 @@ usersTable.addEventListener('click', (e) => {
         console.log(idContent, firstNameContent, lastNameContent, ageContent, emailContent, passwordContent,
             rolesContent);
 
+        $('#edit-modal').modal('show');
+
 
     }
+
+    $('')
 
 });
 
