@@ -11,7 +11,12 @@ const ageValue = document.getElementById('age-value');
 const emailValue = document.getElementById('email-value');
 const passwordValue = document.getElementById('password-value');
 const rolesValue = document.getElementById('roles-value');
-const deleteUserForm = document.getElementById("delete-modal")
+const deleteUserForm = document.getElementById("delete-modal");
+
+//const idDel = document.getElementById("edit-id");
+const modalDelete = document.getElementById('delete-modal')
+const deleteForm = document.getElementById('delete-form')
+
 
 let output = "";
 
@@ -33,14 +38,13 @@ const usersCreate = (users) => {
         </span>
 </th:block>
 <td>
-<button type="button" class="btn btn-info" data-toggle="modal" role="dialog"
-                  data-target= "#edit-modal">
+<button id = "edit-user" type="button" class="btn btn-info" data-toggle="modal" role="dialog">
   Edit
 </button>
 </td>
 <td>
-<button type="button" class="btn btn-danger" data-toggle="modal"
-       role="dialog" data-target="#delete-modal">
+<button id = "delete-user" type="button" class="btn btn-danger" data-toggle="modal"
+       role="dialog">
        Delete user
        </button>
 </td>
@@ -55,15 +59,22 @@ fetch(url)
 
 //Users table
 
-deleteUserForm.addEventListener('click', (e) => {
-    e.preventDefault();
-    let delButtonIsPressed = e.target.id = 'delete-user';
 
-//Delete user
-//DELETE
-    if (delButtonIsPressed) {
-        fetch(`${urlDel}/${id}`)
+
+usersTable.addEventListener('click', (e) => {
+    e.preventDefault();
+    let delButtonIsPressed = e.target.id == "delete-user";
+    let editButtonIsPressed = e.target.id == "edit-user";
+
+    console.log(e.target.parentElement.parentElement.firstElementChild.innerHTML)
+
+    //Delete the existing user
+    if(delButtonIsPressed) {
+        fetch(`${urlDel}/sas`)
+
     }
+
+
 })
 
 // Create new user
@@ -92,6 +103,10 @@ addUserForm.addEventListener('submit', (e) => {
             usersCreate(dataArr);
             location.reload();
         })
+
+    //Delete User
+    //DELETE
+
 })
 
 
