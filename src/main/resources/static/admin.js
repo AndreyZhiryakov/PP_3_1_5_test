@@ -25,12 +25,12 @@ const usersCreate = (users) => {
     users.forEach(user => {
         output += `
 <tr>
-<td>${user.id}</td>
-<td>${user.firstname}</td>
-<td>${user.lastname}</td>
-<td>${user.age}</td>
-<td>${user.email}</td>
-<td>
+<td class = "id">${user.id}</td>
+<td class = "firstname">${user.firstname}</td>
+<td class = "lastname">${user.lastname}</td>
+<td class = "age">${user.age}</td>
+<td class= "email">${user.email}</td>
+<td class = "roles">
 <th:block>
         <span th:switch="">
         <span th:case="'ROLE_ADMIN'">ADMIN</span>
@@ -76,11 +76,23 @@ usersTable.addEventListener('click', (e) => {
             )
             .then(res => res.json())
             .then(() => location.reload())
+    }
+    if (editButtonIsPressed){
+        const parent = e.target.parentElement.parentElement;
+        let idContent = parent.querySelector('.id').textContent;
+        let firstNameContent = parent.querySelector('.firstname').textContent;
+        let lastNameContent = parent.querySelector('.lastname').textContent;
+        let ageContent = parent.querySelector('.age').textContent;
+        let emailContent = parent.querySelector('.email').textContent;
+        let passwordContent = '';
+        let rolesContent = parent.querySelector('.roles').textContent;
+        console.log(idContent, firstNameContent, lastNameContent, ageContent, emailContent, passwordContent,
+            rolesContent);
+
 
     }
 
-
-})
+});
 
 // Create new user
 addUserForm.addEventListener('submit', (e) => {
