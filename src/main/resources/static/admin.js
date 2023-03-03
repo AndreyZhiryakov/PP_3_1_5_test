@@ -19,9 +19,13 @@ const deleteForm = document.getElementById('delete-form');
 const editModal = document.getElementById('edit-modal');
 
 
-const newId = document.getElementById('edit-id');
-
-
+const editId = document.getElementById('edit-id');
+const editFirstName = document.getElementById('edit-firstname');
+const editLastName = document.getElementById('edit-lastname');
+const editAge = document.getElementById('edit-age');
+const editEmail = document.getElementById('edit-email');
+const  editPassword = document.getElementById('edit-password');
+const editRoles = document.getElementById('edit-roles');
 
 
 let output = "";
