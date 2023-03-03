@@ -27,6 +27,8 @@ const editEmail = document.getElementById('edit-email');
 const editPassword = document.getElementById('edit-password');
 const editRoles = document.getElementById('edit-roles');
 
+const btnSubmit = document.getElementById('edit-btn');
+
 
 let output = "";
 
@@ -107,10 +109,14 @@ usersTable.addEventListener('click', (e) => {
 
         $('#edit-modal').modal('show');
 
+        // Update the existing user
+        //PATH
+        btnSubmit.addEventListener('click', () => {
+            console.log('user updated');
+        })
 
     }
 
-    $('')
 
 });
 
