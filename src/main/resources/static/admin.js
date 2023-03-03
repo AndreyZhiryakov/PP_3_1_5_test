@@ -1,6 +1,7 @@
 const url = "api/admin";
 const urlNew = "api/new";
 const urlDel = "api/delete"
+const urlEdit ="api/edit"
 
 
 const usersTable = document.getElementById("users");
@@ -110,9 +111,25 @@ usersTable.addEventListener('click', (e) => {
         $('#edit-modal').modal('show');
 
         // Update the existing user
-        //PATH
+        //PATCH
         btnSubmit.addEventListener('click', () => {
-            console.log('user updated');
+            fetch(`${urlEdit}/@{id}`,{
+             method:'PATCH',
+                headers:{
+                 'Content-Type':'application/jason'
+                },
+                body: JSON.stringify({
+                    id:editId.value,
+                    firstname:editFirstName.value,
+                    lastname:editLastName.value,
+                    age:editAge.value,
+                    email:editEmail.value,
+                    password:editPassword.value,
+                    roles:editRoles.value
+
+                })
+            })
+                .then(res => res.json())
         })
 
     }
