@@ -24,7 +24,7 @@ const editFirstName = document.getElementById('edit-firstname');
 const editLastName = document.getElementById('edit-lastname');
 const editAge = document.getElementById('edit-age');
 const editEmail = document.getElementById('edit-email');
-const  editPassword = document.getElementById('edit-password');
+const editPassword = document.getElementById('edit-password');
 const editRoles = document.getElementById('edit-roles');
 
 
@@ -79,15 +79,15 @@ usersTable.addEventListener('click', (e) => {
     let id = e.target.parentElement.parentElement.firstElementChild.innerHTML;
 
     //Delete the existing user
-    if(delButtonIsPressed) {
-        fetch(`${urlDel}/${id}`,{
-            method:'DELETE'
+    if (delButtonIsPressed) {
+        fetch(`${urlDel}/${id}`, {
+                method: 'DELETE'
             }
-            )
+        )
             .then(res => res.json())
             .then(() => location.reload())
     }
-    if (editButtonIsPressed){
+    if (editButtonIsPressed) {
         const parent = e.target.parentElement.parentElement;
         let idContent = parent.querySelector('.id').textContent;
         let firstNameContent = parent.querySelector('.firstname').textContent;
@@ -96,8 +96,14 @@ usersTable.addEventListener('click', (e) => {
         let emailContent = parent.querySelector('.email').textContent;
         let passwordContent = '';
         let rolesContent = parent.querySelector('.roles').textContent;
-        console.log(idContent, firstNameContent, lastNameContent, ageContent, emailContent, passwordContent,
-            rolesContent);
+
+        editId.value = idContent;
+        editFirstName.value = firstNameContent;
+        editLastName.value = lastNameContent;
+        editAge.value = ageContent;
+        editEmail.value = emailContent;
+        editPassword.value = passwordContent;
+        editRoles.value = rolesContent;
 
         $('#edit-modal').modal('show');
 
