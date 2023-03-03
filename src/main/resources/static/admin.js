@@ -66,11 +66,16 @@ usersTable.addEventListener('click', (e) => {
     let delButtonIsPressed = e.target.id == "delete-user";
     let editButtonIsPressed = e.target.id == "edit-user";
 
-    console.log(e.target.parentElement.parentElement.firstElementChild.innerHTML)
+    let id = e.target.parentElement.parentElement.firstElementChild.innerHTML;
 
     //Delete the existing user
     if(delButtonIsPressed) {
-        fetch(`${urlDel}/sas`)
+        fetch(`${urlDel}/${id}`,{
+            method:'DELETE'
+            }
+            )
+            .then(res => res.json())
+            .then(() => location.reload())
 
     }
 
@@ -104,8 +109,7 @@ addUserForm.addEventListener('submit', (e) => {
             location.reload();
         })
 
-    //Delete User
-    //DELETE
+
 
 })
 
