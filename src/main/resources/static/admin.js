@@ -113,7 +113,7 @@ usersTable.addEventListener('click', (e) => {
         // Update the existing user
         //PATCH
         btnSubmit.addEventListener('click', () => {
-            fetch(`${urlEdit}/${id}`,{
+            fetch(`${"http://localhost:8080/api/edit"}/${id}`,{
              method:'PATCH',
                 headers:{
                  'Content-Type':'application/json'
@@ -125,12 +125,21 @@ usersTable.addEventListener('click', (e) => {
                     age:editAge.value,
                     email:editEmail.value,
                     password:editPassword.value,
-                    roles:editRoles.value
+                    roles_:editRoles.value
 
                 })
             })
+                // .then(res => res.json())
+                // .then(() => location.reload() )
                 .then(res => res.json())
-                .then(() => location.reload() )
+                .then(data => {
+                    const dataArr = [];
+                    dataArr.push(data);
+                    usersCreate(dataArr);
+                   location.reload();
+                })
+
+
         })
 
     }
