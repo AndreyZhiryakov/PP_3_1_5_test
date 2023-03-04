@@ -1,7 +1,7 @@
 const url = "api/admin";
 const urlNew = "api/new";
 const urlDel = "api/delete"
-const urlEdit ="api/edit"
+const urlEdit = "api/edit"
 
 
 const usersTable = document.getElementById("users");
@@ -73,7 +73,6 @@ fetch(url)
 //Users table
 
 
-
 usersTable.addEventListener('click', (e) => {
     e.preventDefault();
     let delButtonIsPressed = e.target.id == "delete-user";
@@ -113,38 +112,26 @@ usersTable.addEventListener('click', (e) => {
         // Update the existing user
         //PATCH
         btnSubmit.addEventListener('click', () => {
-            fetch(`${"http://localhost:8080/api/edit"}/${id}`,{
-             method:'PATCH',
-                headers:{
-                 'Content-Type':'application/json'
+            fetch(`${"http://localhost:8080/api/edit"}/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id:editId.value,
-                    firstname:editFirstName.value,
-                    lastname:editLastName.value,
-                    age:editAge.value,
-                    email:editEmail.value,
-                    password:editPassword.value,
-                    roles_:editRoles.value
+                    id: editId.value,
+                    firstname: editFirstName.value,
+                    lastname: editLastName.value,
+                    age: editAge.value,
+                    email: editEmail.value,
+                    password: editPassword.value,
+                    roles_: editRoles.value
 
                 })
             })
-                // .then(res => res.json())
-                // .then(() => location.reload() )
                 .then(res => res.json())
-                .then(data => {
-                    const dataArr = [];
-                    dataArr.push(data);
-                    usersCreate(dataArr);
-                   location.reload();
-                })
-
-
+                .then(() => location.reload())
         })
-
     }
-
-
 });
 
 // Create new user
@@ -173,7 +160,6 @@ addUserForm.addEventListener('submit', (e) => {
             usersCreate(dataArr);
             location.reload();
         })
-
 
 
 })
