@@ -111,7 +111,8 @@ usersTable.addEventListener('click', (e) => {
 
         // Update the existing user
         //PATCH
-        btnSubmit.addEventListener('click', () => {
+        btnSubmit.addEventListener('click', (e) => {
+            e.preventDefault();
             fetch(`${"http://localhost:8080/api/edit"}/${id}`, {
                 method: 'PATCH',
                 headers: {
