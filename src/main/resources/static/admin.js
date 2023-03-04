@@ -82,6 +82,10 @@ usersTable.addEventListener('click', (e) => {
 
     //Delete the existing user
     if (delButtonIsPressed) {
+        
+
+
+
         fetch(`${urlDel}/${id}`, {
                 method: 'DELETE'
             }
