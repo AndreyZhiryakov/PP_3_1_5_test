@@ -113,10 +113,10 @@ usersTable.addEventListener('click', (e) => {
         // Update the existing user
         //PATCH
         btnSubmit.addEventListener('click', () => {
-            fetch(`${urlEdit}/@{id}`,{
+            fetch(`${urlEdit}/${id}`,{
              method:'PATCH',
                 headers:{
-                 'Content-Type':'application/jason'
+                 'Content-Type':'application/json'
                 },
                 body: JSON.stringify({
                     id:editId.value,
@@ -130,6 +130,7 @@ usersTable.addEventListener('click', (e) => {
                 })
             })
                 .then(res => res.json())
+                .then(() => location.reload() )
         })
 
     }
