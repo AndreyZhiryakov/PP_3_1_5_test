@@ -13,11 +13,15 @@ const emailValue = document.getElementById('email-value');
 const passwordValue = document.getElementById('password-value');
 const rolesValue = document.getElementById('roles-value');
 
+const deleteId = document.getElementById('delete-id');
+const deleteFirstName = document.getElementById('delete-firstname');
+const deleteLastName = document.getElementById('delete-lastname');
+const deleteAge = document.getElementById('delete-age');
+const deleteEmail = document.getElementById('delete-email');
+const deleteRoles = document.getElementById('delete-roles');
 
-const deleteUserForm = document.getElementById('delete-modal');
-const modalDelete = document.getElementById('delete-modal');
-const deleteForm = document.getElementById('delete-form');
-const editModal = document.getElementById('edit-modal');
+const btnDelete = document.getElementById('delete-btn');
+
 
 
 const editId = document.getElementById('edit-id');
@@ -82,17 +86,41 @@ usersTable.addEventListener('click', (e) => {
 
     //Delete the existing user
     if (delButtonIsPressed) {
-        
+        const parentDel = e.target.parentElement.parentElement;
+        let idContentDel = parentDel.querySelector('.id').textContent;
+        let firstNameContentDel = parentDel.querySelector('.firstname').textContent;
+        let lastNameContentDel = parentDel.querySelector('.lastname').textContent;
+        let ageContentDel = parentDel.querySelector('.age').textContent;
+        let emailContentDel = parentDel.querySelector('.email').textContent;
+        let rolesContentDel = parentDel.querySelector('.roles').textContent;
 
+        deleteId.value = idContentDel;
+        deleteFirstName.value = firstNameContentDel;
+        deleteLastName.value = lastNameContentDel;
+        deleteAge.value = ageContentDel;
+        deleteEmail.value = emailContentDel;
+        deleteRoles.value = rolesContentDel;
 
+        $('#delete-modal').modal('show');
 
-        fetch(`${urlDel}/${id}`, {
+        btnDelete.addEventListener('click', (e) => {
+            e.preventDefault();
+            fetch(`${urlDel}/${id}`, {
                 method: 'DELETE'
-            }
-        )
-            .then(res => res.json())
-            .then(() => location.reload())
+                })
+                .then(res => res.json())
+                .then(() => location.reload())
+
+        // fetch(`${urlDel}/${id}`, {
+        //         method: 'DELETE'
+        //     }
+        // )
+        //     .then(res => res.json())
+        //     .then(() => location.reload())
+    })
     }
+    
+
     if (editButtonIsPressed) {
         const parent = e.target.parentElement.parentElement;
         let idContent = parent.querySelector('.id').textContent;

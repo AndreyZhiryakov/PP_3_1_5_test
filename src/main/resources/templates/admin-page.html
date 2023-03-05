@@ -243,33 +243,33 @@
                                             <label><strong>First
                                                 name</strong></label>
                                             <input type="text" class="form-control"
-                                                   id="firstname1"
+                                                   id="delete-firstname"
                                                    name="First name">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Last
                                                 name</strong></label>
                                             <input type="text" class="form-control"
-                                                   id="lastname1" name="Last name">
+                                                   id="delete-lastname" name="Last name">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Age</strong></label>
                                             <input type="number" size="1" name="Age" min="1" max="150" step="1"
                                                    class="form-control"
-                                                   id="age1"
+                                                   id="delete-age"
                                             >
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Email</strong></label>
                                             <input type="email" class="form-control"
-                                                   id="email1"
+                                                   id="delete-email"
                                                    name="Email">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Role</strong></label>
-                                            <select th:value="${roles}" name="roles"
+                                            <select id="delete-roles" name="roles"
                                                     class="form-control bg-body-secondary form-control-sm  text-muted field left"
-                                                    multiple id="validationServer006" style="height: 60px" value="11"
+                                                    multiple style="height: 60px" value="11"
                                                     readonly>
                                                 <option>
                                             </select>
@@ -277,7 +277,7 @@
                                         <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close
                                         </button>
-                                        <button type="submit" class="btn btn-primary" id = "delete-user">Delete</button>
+                                        <button type="submit" class="btn btn-primary" id = "delete-btn">Delete</button>
                                     </form>
                                 </div>
                             </div>
