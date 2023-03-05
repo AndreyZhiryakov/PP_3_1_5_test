@@ -23,7 +23,6 @@ const deleteRoles = document.getElementById('delete-roles');
 const btnDelete = document.getElementById('delete-btn');
 
 
-
 const editId = document.getElementById('edit-id');
 const editFirstName = document.getElementById('edit-firstname');
 const editLastName = document.getElementById('edit-lastname');
@@ -76,7 +75,6 @@ fetch(url)
 
 //Users table
 
-
 usersTable.addEventListener('click', (e) => {
     e.preventDefault();
     let delButtonIsPressed = e.target.id == "delete-user";
@@ -103,23 +101,18 @@ usersTable.addEventListener('click', (e) => {
 
         $('#delete-modal').modal('show');
 
+        // Delete the existing user
+        //DELETE
+
         btnDelete.addEventListener('click', (e) => {
             e.preventDefault();
             fetch(`${urlDel}/${id}`, {
                 method: 'DELETE'
-                })
+            })
                 .then(res => res.json())
                 .then(() => location.reload())
-
-        // fetch(`${urlDel}/${id}`, {
-        //         method: 'DELETE'
-        //     }
-        // )
-        //     .then(res => res.json())
-        //     .then(() => location.reload())
-    })
+        })
     }
-    
 
     if (editButtonIsPressed) {
         const parent = e.target.parentElement.parentElement;
@@ -143,9 +136,10 @@ usersTable.addEventListener('click', (e) => {
 
         // Update the existing user
         //PATCH
+
         btnSubmit.addEventListener('click', (e) => {
             e.preventDefault();
-            fetch(`${"http://localhost:8080/api/edit"}/${id}`, {
+            fetch(`${urlEdit}/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -158,7 +152,6 @@ usersTable.addEventListener('click', (e) => {
                     email: editEmail.value,
                     password: editPassword.value,
                     roles_: editRoles.value
-
                 })
             })
                 .then(res => res.json())
@@ -168,6 +161,7 @@ usersTable.addEventListener('click', (e) => {
 });
 
 // Create new user
+
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -183,7 +177,6 @@ addUserForm.addEventListener('submit', (e) => {
             email: emailValue.value,
             password: passwordValue.value,
             roles_: rolesValue.value
-
         })
     })
         .then(res => res.json())
@@ -193,8 +186,6 @@ addUserForm.addEventListener('submit', (e) => {
             usersCreate(dataArr);
             location.reload();
         })
-
-
 })
 
 
