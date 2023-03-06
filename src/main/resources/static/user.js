@@ -1,18 +1,6 @@
 const url = "api/user";
 const userTable = document.getElementById("user-info");
-
-// fetch(url)
-//
-//     .then(res => res.json())
-//     .then(data => console.log(data))
-//      .catch(error => console.log(error))
-
-
-
 let userShow = " ";
-
-
-
 const userInfo = (user) => {
 
     userShow += `
@@ -30,7 +18,6 @@ const userInfo = (user) => {
         </span>
 </th:block>
 </tr>`
-
 
     userTable.innerHTML = userShow;
 }
