@@ -66,19 +66,17 @@
                   <th scope="col">Role</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr th:method="GET" th:action="@{/user}" th:object="${userPage}" style="background-color:rgba(58,74,74,0.06)">
+                <tbody id = "user-info">
+                <tr style="background-color:rgba(58,74,74,0.06)">
 
-                  <td th:text="${userPage.getId()}">
-                  <td th:text="${userPage.getFirstname()}">
-                  <td th:text="${userPage.getLastname()}">
-                  <td th:text="${userPage.getAge()}">
-                  <td th:text="${userPage.getEmail()}">
-                  <td>
-                    <th:block th:each="role : ${userPage.getRoles()}">
-                                            <span th:switch="${role.getRole()}">
-                                             <span th:case="'ROLE_ADMIN'">ADMIN</span>
-                                               <span th:case="'ROLE_USER'">USER</span>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                    <th:block >
+                                            <span >USER</span>
                                                     </span>
                     </th:block>
                   </td>
@@ -92,8 +90,9 @@
     </div>
   </div>
 </div>
-</body>
 <script src ="../static/user.js"></script>
+</body>
+
 </html>
 
 

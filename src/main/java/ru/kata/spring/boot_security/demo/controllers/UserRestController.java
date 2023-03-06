@@ -20,8 +20,8 @@ public class UserRestController {
 
     @GetMapping(value = "api/user")
 
-    public ResponseEntity<HttpStatus> userPage(Principal principal) {
-        userService.loadUserByUsername(principal.getName());
-        return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<User> userPage(Principal principal) {
+       User user = (User) userService.loadUserByUsername(principal.getName());
+       return ResponseEntity.ok(user);
     }
 }
