@@ -3,7 +3,7 @@ const urlNew = "api/new";
 const urlDel = "api/delete"
 const urlEdit = "api/edit"
 
-
+const btnNewUser = document.getElementById("new-btn")
 const usersTable = document.getElementById("users");
 const addUserForm = document.getElementById("new-user-form");
 const firstNameValue = document.getElementById('firstname-value');
@@ -160,6 +160,9 @@ usersTable.addEventListener('click', (e) => {
     }
 });
 
+btnNewUser.addEventListener('click' ,() =>{
+    console.log('new user');
+})
 // Create new user
 
 addUserForm.addEventListener('submit', (e) => {
