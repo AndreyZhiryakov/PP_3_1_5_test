@@ -3,7 +3,7 @@ const urlNew = "api/new";
 const urlDel = "api/delete"
 const urlEdit = "api/edit"
 
-window.dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
+dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
     authority: "ROLE_ADMIN", unRole: "ADMIN"}]
 
 
@@ -51,12 +51,13 @@ const usersCreate = (users) => {
 <td class = "age">${user.age}</td>
 <td class= "email">${user.email}</td>
 <td class = "roles">
-<th:block>
-        <span th:switch="">
-        <span th:case="'ROLE_ADMIN'">ADMIN</span>
-        <span th:case="'ROLE_USER'">USER</span>
-        </span>
-</th:block>
+  ${user.roles.map(role => role.role)}
+<!--<th:block>-->
+<!--        <span th:switch="">-->
+<!--        <span th:case="'ROLE_ADMIN'">ADMIN</span>-->
+<!--        <span th:case="'ROLE_USER'">USER</span>-->
+<!--        </span>-->
+<!--</th:block>-->
 <td>
 <button id = "edit-user" type="button" class="btn btn-info" data-toggle="modal" role="dialog">
   Edit
@@ -217,7 +218,8 @@ addUserForm.addEventListener('submit', (e) => {
             age: ageValue.value,
             email: emailValue.value,
             password: passwordValue.value,
-            roles:[
+            roles:
+                [
         {
             "id": 1,
             "role": "ROLE_USER",
@@ -234,13 +236,13 @@ addUserForm.addEventListener('submit', (e) => {
         })
     })
         .then(res => res.json())
-        //.then(data => console.log(data))
-        .then(data => {
-            const dataArr = [];
-            dataArr.push(data);
-            usersCreate(dataArr);
-            location.reload();
-        })
+        .then(data => console.log(data))
+        // .then(data => {
+        //     const dataArr = [];
+        //     dataArr.push(data);
+        //     usersCreate(dataArr);
+        //     location.reload();
+        // })
 })
 
 
