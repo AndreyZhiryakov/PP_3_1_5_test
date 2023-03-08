@@ -179,25 +179,24 @@ addUserForm.addEventListener('submit', (e) => {
     // var options = select.selectedOptions;
     //var values = Array.from(options).map(({value}) => value);
     // console.log(values);
-
     var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
 
     console.log(values);
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!" + dbRoles);
+    //console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!" + dbRoles);
 
     var rolesUserArr = new Map();
     for (let x = 0; x < values.length; x++) {
-        console.log("++++++++" + values.length)
+        //console.log("++++++++" + values.length)
         for (let y = 0; y < dbRoles.length; y++) {
-            console.log("---------" + values.length)
+            //console.log("---------" + values.length)
             if (values[x] == dbRoles[y].name) {
-                console.log("!!!!!!!!!" + values.length)
+                //console.log("!!!!!!!!!" + values.length)
                 rolesUserArr.set(dbRoles[y].id, dbRoles[y].name);
-                console.log(dbRoles[y].id, dbRoles[y].name);
+                //console.log(dbRoles[y].id, dbRoles[y].name);
             }
         }
     }
-    console.log("======" + rolesUserArr[0]);
+    //console.log("======" + rolesUserArr[0]);
 
     var roleSetString = "[";
     for (let pair of rolesUserArr) roleSetString +=`{"id":${pair[0]}, "name":"${pair[1]}","authority":"${pair[1]}", "unRole": "${pair[1].replace('ROLE_','')}"},`;
