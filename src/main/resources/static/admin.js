@@ -3,6 +3,10 @@ const urlNew = "api/new";
 const urlDel = "api/delete"
 const urlEdit = "api/edit"
 
+window.dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
+    authority: "ROLE_ADMIN", unRole: "ADMIN"}]
+
+
 const btnNewUser = document.getElementById("new-btn")
 const usersTable = document.getElementById("users");
 const addUserForm = document.getElementById("new-user-form");
@@ -160,13 +164,47 @@ usersTable.addEventListener('click', (e) => {
     }
 });
 
-btnNewUser.addEventListener('click' ,() =>{
-    console.log('new user');
-})
+// btnNewUser.addEventListener('click' ,() =>{
+//     console.log('new user');
+// })
+
+
 // Create new user
 
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const select = document.getElementById('roles-value');
+    // var options = select.selectedOptions;
+    //var values = Array.from(options).map(({value}) => value);
+    // console.log(values);
+
+    var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
+
+    console.log(values);
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!" + dbRoles);
+
+    var rolesUserArr = new Map();
+    for (let x = 0; x < values.length; x++) {
+        console.log("++++++++" + values.length)
+        for (let y = 0; y < dbRoles.length; y++) {
+            console.log("---------" + values.length)
+            if (values[x] == dbRoles[y].name) {
+                console.log("!!!!!!!!!" + values.length)
+                rolesUserArr.set(dbRoles[y].id, dbRoles[y].name);
+                console.log(dbRoles[y].id, dbRoles[y].name);
+            }
+        }
+    }
+    console.log("======" + rolesUserArr[0]);
+
+    var roleSetString = "[";
+    for (let pair of rolesUserArr) roleSetString +=`{"id":${pair[0]}, "name":"${pair[1]}","authority":"${pair[1]}", "unRole": "${pair[1].replace('ROLE_','')}"},`;
+    roleSetString =  roleSetString.slice(0, -1);
+    roleSetString += "]";
+    var roleSet = JSON.parse(roleSetString);
+
+    console.log("=======" + roleSet);
 
     fetch(urlNew, {
         method: 'POST',
@@ -179,10 +217,24 @@ addUserForm.addEventListener('submit', (e) => {
             age: ageValue.value,
             email: emailValue.value,
             password: passwordValue.value,
-            roles_: rolesValue.value
+            roles:[
+        {
+            "id": 1,
+            "role": "ROLE_USER",
+            "authority": "ROLE_USER",
+            "unRole": "USER"
+        },
+        {
+            "id": 2,
+            "role": "ROLE_ADMIN",
+            "authority": "ROLE_ADMIN",
+            "unRole": "ADMIN"
+        }
+    ]
         })
     })
         .then(res => res.json())
+        //.then(data => console.log(data))
         .then(data => {
             const dataArr = [];
             dataArr.push(data);

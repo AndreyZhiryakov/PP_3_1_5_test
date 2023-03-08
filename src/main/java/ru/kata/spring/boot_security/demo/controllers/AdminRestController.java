@@ -36,9 +36,10 @@ public class AdminRestController {
 
     }
     @PostMapping("/new")
-    public ResponseEntity<HttpStatus> newUser (@RequestBody User user){
+    public ResponseEntity<User> newUser (@RequestBody User user){
       userService.addUser(user);
-      return ResponseEntity.ok(HttpStatus.OK);
+        System.out.println(user);
+      return ResponseEntity.ok(user);
     }
 
     @GetMapping("/edit/{id}")
