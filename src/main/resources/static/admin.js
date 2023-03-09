@@ -3,7 +3,7 @@ const urlNew = "api/new";
 const urlDel = "api/delete"
 const urlEdit = "api/edit"
 
-dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
+const dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
     authority: "ROLE_ADMIN", unRole: "ADMIN"}]
 
 
@@ -181,8 +181,8 @@ addUserForm.addEventListener('submit', (e) => {
     // console.log(values);
     var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
 
-    console.log(values);
-    //console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!" + dbRoles);
+    console.log("VALUES " + values);
+    console.log("dbRoles" + dbRoles);
 
     var rolesUserArr = new Map();
     for (let x = 0; x < values.length; x++) {
@@ -196,7 +196,12 @@ addUserForm.addEventListener('submit', (e) => {
             }
         }
     }
-    //console.log("======" + rolesUserArr[0]);
+    console.log("rolesUserArr[0]" + rolesUserArr[0]);
+
+    let listRoles = roleArray(document.getElementById('roles-value'))
+
+    console.log("listRoles " + listRoles[0] + listRoles[1]);
+
 
     var roleSetString = "[";
     for (let pair of rolesUserArr) roleSetString +=`{"id":${pair[0]}, "name":"${pair[1]}","authority":"${pair[1]}", "unRole": "${pair[1].replace('ROLE_','')}"},`;
@@ -204,7 +209,7 @@ addUserForm.addEventListener('submit', (e) => {
     roleSetString += "]";
     var roleSet = JSON.parse(roleSetString);
 
-    console.log("=======" + roleSet);
+    console.log("roleSet" + roleSet);
 
     fetch(urlNew, {
         method: 'POST',
@@ -220,16 +225,16 @@ addUserForm.addEventListener('submit', (e) => {
             roles:
                 [
         {
-            "id": 1,
-            "role": "ROLE_USER",
-            "authority": "ROLE_USER",
-            "unRole": "USER"
+            id: 1,
+            role: "ROLE_USER",
+            authority: "ROLE_USER",
+            unRole: "USER"
         },
         {
-            "id": 2,
-            "role": "ROLE_ADMIN",
-            "authority": "ROLE_ADMIN",
-            "unRole": "ADMIN"
+            id: 2,
+            role: "ROLE_ADMIN",
+            authority: "ROLE_ADMIN",
+            unRole: "ADMIN"
         }
     ]
         })
@@ -244,6 +249,16 @@ addUserForm.addEventListener('submit', (e) => {
         // })
 })
 
+let roleArray = (options) => {
+    let array = []
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].selected) {
+            let role = {id: options[i].value}
+            array.push(role)
+        }
+    }
+    return array
+}
 
 
 
