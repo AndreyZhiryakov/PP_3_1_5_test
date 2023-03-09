@@ -127,16 +127,24 @@
                                             <input type="password" class="form-control" id="password-value"
                                                    placeholder="Password">
                                         </div>
-                                        <div class="form-group">
-                                            <label><strong>Role</strong></label>
-                                            <select name="rolesSelected" multiple class="form-control" size="2"
-                                                    aria-label="size 2 select example" id="roles-value"
-                                                    style="height: 60px">
-                                                <div>
-                                                    <option id="roleUserD" value="ROLE_USER">USER</option>
-                                                    <option id="roleAdminD" value="ROLE_ADMIN">ADMIN</option>
+<!--                                        <div class="form-group">-->
+<!--                                            <label><strong>Role</strong></label>-->
+<!--                                            <select name="rolesSelected" multiple class="form-control" size="2"-->
+<!--                                                    aria-label="size 2 select example" id="roles-value"-->
+<!--                                                    style="height: 60px">-->
+<!--                                                <div>-->
+<!--                                                    <option id="roleUserD" value="ROLE_USER">USER</option>-->
+<!--                                                    <option id="roleAdminD" value="ROLE_ADMIN">ADMIN</option>-->
+<!--                                                </div>-->
+<!--                                            </select>-->
+<!--                                            <div class="row justify-content-md-center">-->
+                                                <div class="form-group w-100 pb-3">
+                                                    <label for="rolesCreate" class="form-label"><b>Role:</b></label>
+                                                    <br>
+                                                    <select multiple class="w-50" required id="rolesCreate" name="rolesCreate">
+                                                    </select>
                                                 </div>
-                                            </select>
+                                            </div>
                                         </div>
                                         <button id="addUserButton" type="submit" class="card text-white" style="font-size:130%; width:auto; height: 45px;
                               background-color: green;margin:0 auto;"> Add new user
