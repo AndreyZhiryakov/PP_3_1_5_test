@@ -51,13 +51,7 @@ const usersCreate = (users) => {
 <td class = "age">${user.age}</td>
 <td class= "email">${user.email}</td>
 <td class = "roles">
-  ${user.roles.map(role => role.role)}
-<!--<th:block>-->
-<!--        <span th:switch="">-->
-<!--        <span th:case="'ROLE_ADMIN'">ADMIN</span>-->
-<!--        <span th:case="'ROLE_USER'">USER</span>-->
-<!--        </span>-->
-<!--</th:block>-->
+  ${user.roles.map(role => role.role.replace('ROLE_',''))}
 <td>
 <button id = "edit-user" type="button" class="btn btn-info" data-toggle="modal" role="dialog">
   Edit
