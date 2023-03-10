@@ -1,10 +1,15 @@
+
+
+
+
 const url = "api/admin";
 const urlNew = "api/new";
 const urlDel = "api/delete"
 const urlEdit = "api/edit"
+const urlRoles = "api/admin/roles"
 
-const dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
-    authority: "ROLE_ADMIN", unRole: "ADMIN"}]
+//const dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
+   // authority: "ROLE_ADMIN", unRole: "ADMIN"}]
 
 
 const btnNewUser = document.getElementById("new-btn")
@@ -36,7 +41,6 @@ const editPassword = document.getElementById('edit-password');
 const editRoles = document.getElementById('edit-roles');
 
 const btnSubmit = document.getElementById('edit-btn');
-
 
 let output = "";
 
@@ -159,9 +163,29 @@ usersTable.addEventListener('click', (e) => {
     }
 });
 
-// btnNewUser.addEventListener('click' ,() =>{
-//     console.log('new user');
-// })
+const getRoles = () => {
+    fetch(urlRoles)
+        .then(response => {
+            return response.json();
+        })
+        .then(roles => {
+            let content = "";
+            for (let j = 0; j < roles.length; j++) {
+                content += "<option value=" + roles[j].id + ">" + roles[j].role  + "</option>";
+
+            }
+            let rolesSelections = document.querySelectorAll("#rolesCreate, #rolesPatch, #rolesDelete")
+            for (let i = 0; i < rolesSelections.length; i++) {
+                rolesSelections[i].innerHTML = content;
+            }
+            console.log("content" + content);
+            console.log("roles selection"+ rolesSelections);
+        })
+}
+btnNewUser.addEventListener('click' ,() =>{
+   getRoles();
+})
+
 
 
 // Create new user
@@ -169,41 +193,41 @@ usersTable.addEventListener('click', (e) => {
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const select = document.getElementById('roles-value');
-    // var options = select.selectedOptions;
-    //var values = Array.from(options).map(({value}) => value);
-    // console.log(values);
-    var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
-
-    console.log("VALUES " + values);
-    console.log("dbRoles" + dbRoles);
-
-    var rolesUserArr = new Map();
-    for (let x = 0; x < values.length; x++) {
-        //console.log("++++++++" + values.length)
-        for (let y = 0; y < dbRoles.length; y++) {
-            //console.log("---------" + values.length)
-            if (values[x] == dbRoles[y].name) {
-                //console.log("!!!!!!!!!" + values.length)
-                rolesUserArr.set(dbRoles[y].id, dbRoles[y].name);
-                //console.log(dbRoles[y].id, dbRoles[y].name);
-            }
-        }
-    }
-    console.log("rolesUserArr[0]" + rolesUserArr[0]);
-
-    let listRoles = roleArray(document.getElementById('roles-value'))
-
-    console.log("listRoles " + listRoles[0] + listRoles[1]);
-
-
-    var roleSetString = "[";
-    for (let pair of rolesUserArr) roleSetString +=`{"id":${pair[0]}, "name":"${pair[1]}","authority":"${pair[1]}", "unRole": "${pair[1].replace('ROLE_','')}"},`;
-    roleSetString =  roleSetString.slice(0, -1);
-    roleSetString += "]";
-    var roleSet = JSON.parse(roleSetString);
-
-    console.log("roleSet" + roleSet);
+    // const select = document.getElementById('roles-value');
+    // // var options = select.selectedOptions;
+    // //var values = Array.from(options).map(({value}) => value);
+    // // console.log(values);
+    // var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
+    //
+    // console.log("VALUES " + values);
+    // console.log("dbRoles" + dbRoles);
+    //
+    // var rolesUserArr = new Map();
+    // for (let x = 0; x < values.length; x++) {
+    //     //console.log("++++++++" + values.length)
+    //     for (let y = 0; y < dbRoles.length; y++) {
+    //         //console.log("---------" + values.length)
+    //         if (values[x] == dbRoles[y].name) {
+    //             //console.log("!!!!!!!!!" + values.length)
+    //             rolesUserArr.set(dbRoles[y].id, dbRoles[y].name);
+    //             //console.log(dbRoles[y].id, dbRoles[y].name);
+    //         }
+    //     }
+    // }
+    // console.log("rolesUserArr[0]" + rolesUserArr[0]);
+    //
+    // let listRoles = roleArray(document.getElementById('roles-value'))
+    //
+    // console.log("listRoles " + listRoles[0] + listRoles[1]);
+    //
+    //
+    // var roleSetString = "[";
+    // for (let pair of rolesUserArr) roleSetString +=`{"id":${pair[0]}, "name":"${pair[1]}","authority":"${pair[1]}", "unRole": "${pair[1].replace('ROLE_','')}"},`;
+    // roleSetString =  roleSetString.slice(0, -1);
+    // roleSetString += "]";
+    // var roleSet = JSON.parse(roleSetString);
+    //
+    // console.log("roleSet" + roleSet);
 
     fetch(urlNew, {
         method: 'POST',
