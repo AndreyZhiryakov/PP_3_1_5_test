@@ -205,9 +205,9 @@ addUserForm.addEventListener('submit', (e) => {
     //     if(role2) {
     //         return role2.value;
     //     }
-    let resultArr = values.map(value => rolesArr.find(role => role.id.toString() === value)?.role);
+    let resultArr = values.map(value => ({id: parseInt(value), role: rolesArr.find(role => role.id === parseInt(value))?.role}));
 
-    console.log(resultArr); // ["ROLE_USER", "ROLE_ADMIN"]
+    console.log(resultArr); // [{"id": 1, "role": "ROLE_USER"}, {"id": 2, "role": "ROLE_ADMIN"}]
 
     //})
     //console.log(rolesNew);
@@ -259,7 +259,7 @@ addUserForm.addEventListener('submit', (e) => {
             age: ageValue.value,
             email: emailValue.value,
             password: passwordValue.value,
-            roles: rolesNew
+            roles: resultArr
     //             [
     //     {
     //         id: 1,
@@ -277,13 +277,13 @@ addUserForm.addEventListener('submit', (e) => {
         })
     })
         .then(res => res.json())
-        .then(data => console.log(data))
-        // .then(data => {
-        //     const dataArr = [];
-        //     dataArr.push(data);
-        //     usersCreate(dataArr);
-        //     location.reload();
-        // })
+        //.then(data => console.log(data))
+        .then(data => {
+            const dataArr = [];
+            dataArr.push(data);
+            usersCreate(dataArr);
+            location.reload();
+        })
 })
 
 let roleArray = (options) => {
