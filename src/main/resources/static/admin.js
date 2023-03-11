@@ -47,7 +47,7 @@ const usersCreate = (users) => {
 <td class = "age">${user.age}</td>
 <td class= "email">${user.email}</td>
 <td class = "roles">
-  ${user.roles.map(role => role.role.replace('ROLE_',''))}
+  ${user.roles.map(role => role.role.replace('ROLE_', ''))}
 <td>
 <button id = "edit-user" type="button" class="btn btn-info" data-toggle="modal" role="dialog">
   Edit
@@ -165,22 +165,18 @@ const getRoles = () => {
             rolesArr = Array.from(roles);
             let content = "";
             for (let j = 0; j < roles.length; j++) {
-                content += "<option value=" + roles[j].id + ">" + roles[j].role  + "</option>";
+                content += "<option value=" + roles[j].id + ">" + roles[j].role + "</option>";
 
             }
             let rolesSelections = document.querySelectorAll("#rolesCreate, #rolesPatch, #rolesDelete")
             for (let i = 0; i < rolesSelections.length; i++) {
                 rolesSelections[i].innerHTML = content;
             }
-            console.log("content" + content);
-            console.log("roles selection"+ rolesSelections);
         })
 }
-btnNewUser.addEventListener('click' ,() =>{
-   getRoles();
+btnNewUser.addEventListener('click', () => {
+    getRoles();
 })
-
-
 
 // Create new user
 
@@ -192,61 +188,16 @@ addUserForm.addEventListener('submit', (e) => {
     console.log(select)
     var options = select.selectedOptions;
 
-    // //var values = Array.from(options).map(({value}) => value);
-    // // console.log(values);
-    var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
+    var values = Array.from(select.options).filter(option => option.selected).map(option => option.value);
 
     console.log(values);
 
-    // let rolesNew = values.map((role1) => {
-    //     let role2 = rolesArr.find(role2 => role2.id === role1.id);
-    //     //console.log(role2.id);
-    //     console.log(role1.id)
-    //     if(role2) {
-    //         return role2.value;
-    //     }
-    let resultArr = values.map(value => ({id: parseInt(value), role: rolesArr.find(role => role.id === parseInt(value))?.role}));
+    let resultArr = values.map(value => ({
+        id: parseInt(value),
+        role: rolesArr.find(role => role.id === parseInt(value))?.role
+    }));
 
-    console.log(resultArr); // [{"id": 1, "role": "ROLE_USER"}, {"id": 2, "role": "ROLE_ADMIN"}]
-
-    //})
-    //console.log(rolesNew);
-    //     values.forEach((id) => {
-    //     rolesNew.push(rolesArr.find((role) => role.id === id));
-    //
-    // });
-
-
-    //
-    // console.log("VALUES " + values);
-    // console.log("dbRoles" + dbRoles);
-    //
-    // var rolesUserArr = new Map();
-    // for (let x = 0; x < values.length; x++) {
-    //     //console.log("++++++++" + values.length)
-    //     for (let y = 0; y < dbRoles.length; y++) {
-    //         //console.log("---------" + values.length)
-    //         if (values[x] == dbRoles[y].name) {
-    //             //console.log("!!!!!!!!!" + values.length)
-    //             rolesUserArr.set(dbRoles[y].id, dbRoles[y].name);
-    //             //console.log(dbRoles[y].id, dbRoles[y].name);
-    //         }
-    //     }
-    // }
-    // console.log("rolesUserArr[0]" + rolesUserArr[0]);
-    //
-    // let listRoles = roleArray(document.getElementById('roles-value'))
-    //
-    // console.log("listRoles " + listRoles[0] + listRoles[1]);
-    //
-    //
-    // var roleSetString = "[";
-    // for (let pair of rolesUserArr) roleSetString +=`{"id":${pair[0]}, "name":"${pair[1]}","authority":"${pair[1]}", "unRole": "${pair[1].replace('ROLE_','')}"},`;
-    // roleSetString =  roleSetString.slice(0, -1);
-    // roleSetString += "]";
-    // var roleSet = JSON.parse(roleSetString);
-    //
-    // console.log("roleSet" + roleSet);
+    console.log(resultArr);
 
     fetch(urlNew, {
         method: 'POST',
@@ -260,20 +211,7 @@ addUserForm.addEventListener('submit', (e) => {
             email: emailValue.value,
             password: passwordValue.value,
             roles: resultArr
-    //             [
-    //     {
-    //         id: 1,
-    //         role: "ROLE_USER",
-    //         authority: "ROLE_USER",
-    //         unRole: "USER"
-    //     },
-    //     {
-    //         id: 2,
-    //         role: "ROLE_ADMIN",
-    //         authority: "ROLE_ADMIN",
-    //         unRole: "ADMIN"
-    //     }
-    // ]
+
         })
     })
         .then(res => res.json())
@@ -286,16 +224,6 @@ addUserForm.addEventListener('submit', (e) => {
         })
 })
 
-let roleArray = (options) => {
-    let array = []
-    for (let i = 0; i < options.length; i++) {
-        if (options[i].selected) {
-            let role = {id: options[i].value}
-            array.push(role)
-        }
-    }
-    return array
-}
 
 
 
