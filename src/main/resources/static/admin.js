@@ -137,6 +137,16 @@ usersTable.addEventListener('click', (e) => {
 
         btnSubmit.addEventListener('click', (e) => {
             e.preventDefault();
+
+            const selectEdit = document.getElementById('rolesPatch');
+            var optionsEdit = selectEdit.selectedOptions;
+            var valuesEdit = Array.from(selectEdit.options).filter(option => option.selected).map(option => option.value);
+
+            let resultArrEdit = valuesEdit.map(value => ({
+                id: parseInt(value),
+                role: rolesArr.find(role => role.id === parseInt(value))?.role
+            }));
+
             fetch(`${urlEdit}/${id}`, {
                 method: 'PATCH',
                 headers: {
@@ -149,7 +159,7 @@ usersTable.addEventListener('click', (e) => {
                     age: editAge.value,
                     email: editEmail.value,
                     password: editPassword.value,
-                    roles_: editRoles.value
+                    roles: resultArrEdit
                 })
             })
                 .then(res => res.json())
@@ -186,21 +196,15 @@ btnNewUser.addEventListener('click', () => {
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    console.log(rolesArr);
     const select = document.getElementById('rolesCreate');
-    console.log(select)
     var options = select.selectedOptions;
-
     var values = Array.from(select.options).filter(option => option.selected).map(option => option.value);
-
-    console.log(values);
 
     let resultArr = values.map(value => ({
         id: parseInt(value),
         role: rolesArr.find(role => role.id === parseInt(value))?.role
     }));
 
-    console.log(resultArr);
 
     fetch(urlNew, {
         method: 'POST',
