@@ -129,17 +129,6 @@
                                             <input type="password" class="form-control" id="password-value"
                                                    placeholder="Password">
                                         </div>
-<!--                                        <div class="form-group">-->
-<!--                                            <label><strong>Role</strong></label>-->
-<!--                                            <select name="rolesSelected" multiple class="form-control" size="2"-->
-<!--                                                    aria-label="size 2 select example" id="roles-value"-->
-<!--                                                    style="height: 60px">-->
-<!--                                                <div>-->
-<!--                                                    <option id="roleUserD" value="ROLE_USER">USER</option>-->
-<!--                                                    <option id="roleAdminD" value="ROLE_ADMIN">ADMIN</option>-->
-<!--                                                </div>-->
-<!--                                            </select>-->
-<!--                                        </div>-->
                                         <div class="row justify-content-md-center">
                                             <div class="form-group w-50 pb-3">
                                                 <label for="rolesCreate" class="form-label"><b>Role:</b></label>
@@ -208,16 +197,23 @@
                                                        id="edit-password"
                                                        name="Password">
                                             </div>
-                                            <div class="form-group">
-                                                <label><strong>Role</strong></label>
-                                                <select name="edit-roles"
-                                                        class="form-control bg-body-secondary form-control-sm  text-muted field left"
-                                                        multiple id="edit-roles" style="height: 60px" value="11"
-                                                        readonly>
-                                                    <option>
-                                                </select>
+<!--                                            <div class="form-group">-->
+<!--                                                <label><strong>Role</strong></label>-->
+<!--                                                <select name="edit-roles"-->
+<!--                                                        class="form-control bg-body-secondary form-control-sm  text-muted field left"-->
+<!--                                                        multiple id="edit-roles" style="height: 60px" value="11"-->
+<!--                                                        readonly>-->
+<!--                                                    <option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+                                            <div class="row justify-content-md-center">
+                                                <div class="form-group w-50 pb-3">
+                                                    <label for="rolesPatch" class="form-label"><b>Role:</b></label>
+                                                    <br>
+                                                    <select multiple class="w-100" required id="rolesPatch" name="rolesPatch">
+                                                    </select>
+                                                </div>
                                             </div>
-
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close
@@ -281,14 +277,22 @@
                                                        id="delete-email"
                                                        name="Email">
                                             </div>
-                                            <div class="form-group">
-                                                <label><strong>Role</strong></label>
-                                                <select id="delete-roles" name="roles"
-                                                        class="form-control bg-body-secondary form-control-sm  text-muted field left"
-                                                        multiple style="height: 60px" value="11"
-                                                        readonly>
-                                                    <option>
-                                                </select>
+<!--                                            <div class="form-group">-->
+<!--                                                <label><strong>Role</strong></label>-->
+<!--                                                <select id="delete-roles" name="roles"-->
+<!--                                                        class="form-control bg-body-secondary form-control-sm  text-muted field left"-->
+<!--                                                        multiple style="height: 60px" value="11"-->
+<!--                                                        readonly>-->
+<!--                                                    <option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+                                            <div class="row justify-content-md-center">
+                                                <div class="form-group w-50 pb-3">
+                                                    <label for="rolesDelete" class="form-label"><b>Role:</b></label>
+                                                    <br>
+                                                    <select multiple class="w-100" required id="rolesDelete" name="rolesDelete">
+                                                    </select>
+                                                </div>
                                             </div>
                                             <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close

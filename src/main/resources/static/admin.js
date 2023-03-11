@@ -85,16 +85,19 @@ usersTable.addEventListener('click', (e) => {
         let lastNameContentDel = parentDel.querySelector('.lastname').textContent;
         let ageContentDel = parentDel.querySelector('.age').textContent;
         let emailContentDel = parentDel.querySelector('.email').textContent;
-        let rolesContentDel = parentDel.querySelector('.roles').textContent;
+        //let rolesContentDel = parentDel.querySelector('.roles').textContent;
 
         deleteId.value = idContentDel;
         deleteFirstName.value = firstNameContentDel;
         deleteLastName.value = lastNameContentDel;
         deleteAge.value = ageContentDel;
         deleteEmail.value = emailContentDel;
-        deleteRoles.value = rolesContentDel;
+        //deleteRoles.value = rolesContentDel;
+        getRoles();
 
         $('#delete-modal').modal('show');
+
+
 
         // Delete the existing user
         //DELETE
@@ -125,7 +128,7 @@ usersTable.addEventListener('click', (e) => {
         editAge.value = ageContent;
         editEmail.value = emailContent;
         editPassword.value = passwordContent;
-        editRoles.value = rolesContent;
+        getRoles();
 
         $('#edit-modal').modal('show');
 
