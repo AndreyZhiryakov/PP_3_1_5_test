@@ -43,6 +43,7 @@ const editRoles = document.getElementById('edit-roles');
 const btnSubmit = document.getElementById('edit-btn');
 
 let output = "";
+var rolesArr;
 
 // users Table
 const usersCreate = (users) => {
@@ -169,6 +170,8 @@ const getRoles = () => {
             return response.json();
         })
         .then(roles => {
+
+            rolesArr = Array.from(roles);
             let content = "";
             for (let j = 0; j < roles.length; j++) {
                 content += "<option value=" + roles[j].id + ">" + roles[j].role  + "</option>";
@@ -192,12 +195,24 @@ btnNewUser.addEventListener('click' ,() =>{
 
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    console.log(rolesArr);
+    const select = document.getElementById('rolesCreate');
+    console.log("select grab    "+ select)
+    var options = select.selectedOptions;
 
-    // const select = document.getElementById('roles-value');
-    // // var options = select.selectedOptions;
     // //var values = Array.from(options).map(({value}) => value);
     // // console.log(values);
-    // var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
+    var values =  Array.from(select.options).filter(option => option.selected).map(option => option.value);
+
+    console.log(values);
+
+    let rolesNew = [];
+        values.forEach((id) => {
+        rolesNew.push(rolesArr.find((role) => role.id === id));
+
+    });
+    console.log(rolesNew);
+
     //
     // console.log("VALUES " + values);
     // console.log("dbRoles" + dbRoles);
