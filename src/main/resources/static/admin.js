@@ -1,17 +1,8 @@
-
-
-
-
 const url = "api/admin";
 const urlNew = "api/new";
 const urlDel = "api/delete"
 const urlEdit = "api/edit"
 const urlRoles = "api/admin/roles"
-
-//const dbRoles = [{id: 1, name: "ROLE_USER", authority: "ROLE_USER", unRole: "USER" }, {id: 2, name: "ROLE_ADMIN",
-   // authority: "ROLE_ADMIN", unRole: "ADMIN"}]
-
-
 const btnNewUser = document.getElementById("new-btn")
 const usersTable = document.getElementById("users");
 const addUserForm = document.getElementById("new-user-form");
@@ -195,9 +186,10 @@ btnNewUser.addEventListener('click' ,() =>{
 
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
     console.log(rolesArr);
     const select = document.getElementById('rolesCreate');
-    console.log("select grab    "+ select)
+    console.log(select)
     var options = select.selectedOptions;
 
     // //var values = Array.from(options).map(({value}) => value);
@@ -206,12 +198,24 @@ addUserForm.addEventListener('submit', (e) => {
 
     console.log(values);
 
-    let rolesNew = [];
-        values.forEach((id) => {
-        rolesNew.push(rolesArr.find((role) => role.id === id));
+    // let rolesNew = values.map((role1) => {
+    //     let role2 = rolesArr.find(role2 => role2.id === role1.id);
+    //     //console.log(role2.id);
+    //     console.log(role1.id)
+    //     if(role2) {
+    //         return role2.value;
+    //     }
+    let resultArr = values.map(value => rolesArr.find(role => role.id.toString() === value)?.role);
 
-    });
-    console.log(rolesNew);
+    console.log(resultArr); // ["ROLE_USER", "ROLE_ADMIN"]
+
+    //})
+    //console.log(rolesNew);
+    //     values.forEach((id) => {
+    //     rolesNew.push(rolesArr.find((role) => role.id === id));
+    //
+    // });
+
 
     //
     // console.log("VALUES " + values);
@@ -255,21 +259,21 @@ addUserForm.addEventListener('submit', (e) => {
             age: ageValue.value,
             email: emailValue.value,
             password: passwordValue.value,
-            roles:
-                [
-        {
-            id: 1,
-            role: "ROLE_USER",
-            authority: "ROLE_USER",
-            unRole: "USER"
-        },
-        {
-            id: 2,
-            role: "ROLE_ADMIN",
-            authority: "ROLE_ADMIN",
-            unRole: "ADMIN"
-        }
-    ]
+            roles: rolesNew
+    //             [
+    //     {
+    //         id: 1,
+    //         role: "ROLE_USER",
+    //         authority: "ROLE_USER",
+    //         unRole: "USER"
+    //     },
+    //     {
+    //         id: 2,
+    //         role: "ROLE_ADMIN",
+    //         authority: "ROLE_ADMIN",
+    //         unRole: "ADMIN"
+    //     }
+    // ]
         })
     })
         .then(res => res.json())
