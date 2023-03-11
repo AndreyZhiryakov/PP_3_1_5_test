@@ -11,12 +11,13 @@ const userInfo = (user) => {
 <td class = "age">${user.age}</td>
 <td class= "email">${user.email}</td>
 <td class = "roles">
-<th:block>
-        <span th:switch="">
-        <span th:case="'ROLE_ADMIN'">ADMIN</span>
-        <span th:case="'ROLE_USER'">USER</span>
-        </span>
-</th:block>
+${user.roles.map(role => role.role.replace('ROLE_', ''))}
+<!--<th:block>-->
+<!--        <span th:switch="">-->
+<!--        <span th:case="'ROLE_ADMIN'">ADMIN</span>-->
+<!--        <span th:case="'ROLE_USER'">USER</span>-->
+<!--        </span>-->
+<!--</th:block>-->
 </tr>`
 
     userTable.innerHTML = userShow;
