@@ -6,10 +6,8 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 
@@ -37,8 +35,6 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-
-
     @ManyToMany(fetch = FetchType.LAZY)
     @Fetch(FetchMode.JOIN)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id",
@@ -50,8 +46,6 @@ public class User implements UserDetails {
 
     public User() {
     }
-
-
 
     public String getFirstname() {
         return firstname;
@@ -139,6 +133,5 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 }

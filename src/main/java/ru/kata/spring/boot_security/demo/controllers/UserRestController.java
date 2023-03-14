@@ -15,8 +15,12 @@ import java.security.Principal;
 @Controller
 
 public class UserRestController {
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserRestController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping(value = "api/user")
 

@@ -2,9 +2,9 @@ package ru.kata.spring.boot_security.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
@@ -16,10 +16,16 @@ import java.util.Set;
 @Service
 public class UserServiceImp implements UserService {
 
-    @Autowired
+    private final
     UserRepository userRepository;
+   private final
+   PasswordEncoder passwordEncoder;
+
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -48,7 +54,7 @@ public class UserServiceImp implements UserService {
             return false;
         }
 
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }
@@ -65,7 +71,7 @@ public class UserServiceImp implements UserService {
         userToBeUpdate.setLastname(updateUser.getLastname());
         userToBeUpdate.setAge(updateUser.getAge());
         userToBeUpdate.setEmail(updateUser.getEmail());
-        userToBeUpdate.setPassword(bCryptPasswordEncoder.encode(updateUser.getPassword()));
+        userToBeUpdate.setPassword(passwordEncoder.encode(updateUser.getPassword()));
         userToBeUpdate.setRoles((Set<Role>) updateUser.getRoles());
         userRepository.save(userToBeUpdate);
 

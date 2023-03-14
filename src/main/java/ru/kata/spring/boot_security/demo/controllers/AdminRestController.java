@@ -14,10 +14,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class AdminRestController {
-@Autowired
-    private UserService userService;
-@Autowired
-    private RoleService  roleService;
+private final UserService userService;
+private final RoleService  roleService;
+ @Autowired
+    public AdminRestController(UserService userService, RoleService roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
+    }
 
     @GetMapping()
     public ResponseEntity <List<String>> getTest () {

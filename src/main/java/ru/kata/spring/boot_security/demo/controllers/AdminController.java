@@ -16,10 +16,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.*;
 
-
 @Controller
-
-
 public class AdminController {
 
     private UserService userService;
