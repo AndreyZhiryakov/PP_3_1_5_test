@@ -45,7 +45,7 @@ public class User implements UserDetails {
             referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "roles_id",
             referencedColumnName = "id"))
 
-    private List<Role> roles;
+    private Set<Role> roles;
 
 
     public User() {
@@ -112,7 +112,7 @@ public class User implements UserDetails {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set <Role> roles) {
         this.roles = roles;
     }
 

@@ -72,7 +72,7 @@ public class UserServiceImp implements UserService {
         userToBeUpdate.setAge(updateUser.getAge());
         userToBeUpdate.setEmail(updateUser.getEmail());
         userToBeUpdate.setPassword(bCryptPasswordEncoder.encode(updateUser.getPassword()));
-        userToBeUpdate.setRoles((List<Role>) updateUser.getRoles());
+        userToBeUpdate.setRoles((Set<Role>) updateUser.getRoles());
         userRepository.save(userToBeUpdate);
 
     }

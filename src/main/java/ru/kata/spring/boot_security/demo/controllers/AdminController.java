@@ -14,10 +14,7 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Controller
@@ -56,7 +53,7 @@ public class AdminController {
     @PostMapping(value = "admin/new")
     public String addNewUser(@ModelAttribute("user") User user, @RequestParam("rolesSelected") Long[] rolesId,
                              BindingResult bindingResult) throws Exception {
-        List<Role> roles = new ArrayList<>();
+        Set<Role> roles = new HashSet<>();
         for (Long roleId : rolesId) {
             roles.add(roleRepository.getById(roleId));
         }
