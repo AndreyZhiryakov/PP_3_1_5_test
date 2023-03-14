@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -15,28 +14,23 @@ public class RoleServiceImp implements RoleService {
     @Autowired
     RoleRepository roleRepository;
 
-    @PersistenceContext
-    private EntityManager entityManager;
     @Override
-    public Role findById(long id){
-        return entityManager.find(Role.class, id);
+
+    public Optional<Role> findById(long id) {
+        Optional<Role> roleId = roleRepository.findById(id);
+        return roleId;
     }
+
     @Override
-     public List<Role> getAllRoles() {
-        return entityManager.createQuery("select r from Role r").getResultList();
-     }
-     @Override
-     public void addRole(Role role) {
-        entityManager.persist(role);
-     }
-     @Override
-     public Role getRole(String role) {
-        return entityManager.createQuery("select r from Role r where r.role =: role", Role.class)
-                .setParameter("role",role).getSingleResult();
-     }
 
+    public List<Role> getAllRoles() {
+        return roleRepository.findAll();
+    }
 
+    @Override
 
-
+    public void addRole(Role role) {
+        roleRepository.save(role);
+    }
 
 }
